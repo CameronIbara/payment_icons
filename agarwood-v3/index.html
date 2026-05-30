@@ -46,10 +46,9 @@
   </div>
 </header>
 
-<!-- HERO -->
+<!-- HERO split -->
 <section class="hero" aria-label="Agarwood Maroc — la maison du oud">
-  <canvas class="hero__canvas" aria-hidden="true"></canvas>
-  <div class="wrap hero__inner">
+  <div class="hero__panel">
     <span class="eyebrow">Marrakech · La maison du oud</span>
     <h1>L'âme du <em>oud,</em> en flacon.</h1>
     <p class="hero__sub">Oud Qmari authentique, attars signature et essences rares — sourcés à la main, du Laos au Khorassan. Pour ceux qui ne se contentent pas d'imitations.</p>
@@ -62,8 +61,12 @@
       <span><svg viewBox="0 0 24 24"><path d="M12 3l7 4v5c0 5-3 7-7 9-4-2-7-4-7-9V7z"/><path d="M9 12l2 2 4-4"/></svg> Authenticité certifiée</span>
       <span><svg viewBox="0 0 24 24"><path d="M3 7h13v8H3z"/><path d="M16 10h4l1 3v2h-5z"/><circle cx="7" cy="17" r="2"/><circle cx="18" cy="17" r="2"/></svg> Expédition 24-48h</span>
     </div>
+    <span class="scrollcue">Découvrir ↓</span>
   </div>
-  <span class="scrollcue">Découvrir ↓</span>
+  <div class="hero__visual">
+    <img class="hero__img" src="assets/img/boutique-hero.jpg" alt="La boutique Agarwood Maroc à Marrakech — flacons de oud et essences rares" loading="eager" fetchpriority="high">
+    <div class="hero__badge"><small>Maison Agarwood</small><b>L'Héritage Royal</b></div>
+  </div>
 </section>
 
 <!-- AUTHENTICITY -->
@@ -216,11 +219,6 @@
     const d=data[+o.dataset.r];
     r_img.src=d.img;r_cat.textContent=d.cat;r_name.textContent=d.name;r_p.textContent=d.p;
   }));
-</script>
-<script type="importmap">{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }</script>
-<script type="module">
-  import { initHero } from './hero.js';
-  initHero(document.querySelector('.hero__canvas'), 'assets/img/boutique.webp');
 </script>
 </body>
 </html>

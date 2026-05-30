@@ -54,20 +54,28 @@ em{font-style:italic;color:var(--gold);}
 .header__act svg{width:19px;height:19px;stroke:var(--cream);fill:none;stroke-width:1.5;}
 .badge-n{position:absolute;top:0;right:0;background:var(--gold);color:var(--bg);font-size:.58rem;font-weight:700;width:15px;height:15px;border-radius:50%;display:grid;place-items:center;font-family:var(--sans);}
 
-/* hero */
-.hero{position:relative;min-height:94vh;display:flex;align-items:center;overflow:hidden;background:var(--bg);}
-.hero__canvas{position:absolute;inset:0;width:100%;height:100%;}
-.hero__inner{position:relative;z-index:2;padding:130px 0 110px;}
-.hero h1{font-size:clamp(3rem,7vw,6.4rem);color:var(--paper);margin:1.5rem 0 1.4rem;max-width:16ch;letter-spacing:-.02em;}
+/* hero — split : panneau texte (gauche) + photo nette (droite) */
+.hero{position:relative;display:grid;grid-template-columns:1fr 1.12fr;min-height:90vh;background:var(--bg);overflow:hidden;}
+.hero__panel{position:relative;display:flex;flex-direction:column;justify-content:center;padding:110px 5vw 90px;
+  background:radial-gradient(120% 90% at 0% 30%,var(--bg-3),var(--bg) 60%);}
+.hero__panel::after{content:"";position:absolute;top:0;right:-1px;width:2px;height:100%;background:linear-gradient(var(--bg),var(--gold-deep),var(--bg));opacity:.5;}
+.hero h1{font-size:clamp(2.8rem,5.2vw,5.2rem);color:var(--paper);margin:1.4rem 0 1.3rem;max-width:14ch;letter-spacing:-.02em;}
 .hero h1 em{color:var(--gold);}
-.hero__sub{color:var(--cream);opacity:.86;font-size:clamp(1.05rem,1.4vw,1.28rem);max-width:44ch;margin-bottom:2.4rem;}
+.hero__sub{color:var(--cream);opacity:.84;font-size:clamp(1.02rem,1.3vw,1.2rem);max-width:42ch;margin-bottom:2.2rem;}
 .hero__cta{display:flex;gap:14px;flex-wrap:wrap;}
-.hero__trust{display:flex;gap:28px;margin-top:2.6rem;flex-wrap:wrap;}
-.hero__trust span{display:flex;align-items:center;gap:9px;font-size:.82rem;color:var(--cream);}
+.hero__trust{display:flex;gap:24px;margin-top:2.4rem;flex-wrap:wrap;}
+.hero__trust span{display:flex;align-items:center;gap:9px;font-size:.8rem;color:var(--cream);}
 .hero__trust svg{width:17px;height:17px;stroke:var(--gold);fill:none;stroke-width:1.6;}
 .hero__trust .st{color:var(--gold-br);letter-spacing:2px;}
-.scrollcue{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:2;color:rgba(201,169,110,.8);font-size:.64rem;letter-spacing:.3em;text-transform:uppercase;animation:bob 2.4s var(--ease) infinite;}
-@keyframes bob{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,7px);}}
+.hero__visual{position:relative;overflow:hidden;}
+.hero__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;animation:kb 18s ease-in-out infinite alternate;}
+@keyframes kb{from{transform:scale(1.02);}to{transform:scale(1.1);}}
+.hero__visual::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(21,17,13,.45) 0%,rgba(21,17,13,0) 22%);}
+.hero__badge{position:absolute;left:24px;bottom:24px;z-index:2;background:rgba(21,17,13,.55);backdrop-filter:blur(8px);border:1px solid var(--line-2);padding:12px 18px;border-radius:5px;}
+.hero__badge small{display:block;font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-br);}
+.hero__badge b{font-family:var(--serif);font-style:italic;font-size:1.3rem;color:var(--paper);font-weight:400;}
+.scrollcue{position:absolute;bottom:22px;left:5vw;z-index:3;color:rgba(201,169,110,.85);font-size:.64rem;letter-spacing:.3em;text-transform:uppercase;animation:bob 2.4s var(--ease) infinite;}
+@keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(7px);}}
 
 /* authenticity strip */
 .auth{background:var(--bg-2);border-block:1px solid var(--line);}
@@ -185,6 +193,8 @@ em{font-style:italic;color:var(--gold);}
 
 @media (max-width:1000px){
   .nav{display:none;}
+  .hero{grid-template-columns:1fr;} .hero__panel{padding:108px 7vw 60px;} .hero__panel::after{display:none;}
+  .hero__visual{min-height:360px;order:-1;} .scrollcue{display:none;}
   .auth__grid{grid-template-columns:1fr 1fr;}
   .spot,.disco,.founders{grid-template-columns:1fr;}
   .spot__media,.founders__v{min-height:420px;}
